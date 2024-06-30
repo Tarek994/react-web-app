@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function SearchMovies() {
+function SearchMovies(props) {
   const [movieTitle, setMovieTitle] = useState("");
 
   const searchMovie = async (e) => {
@@ -10,7 +10,7 @@ function SearchMovies() {
     try {
       const response = await fetch(url);
       const data = await response.json();
-      console.log(data);
+      props.addFavourites(data);
     } catch (err) {
       console.log(err);
     }
